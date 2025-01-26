@@ -12,10 +12,13 @@ struct NewPostScreen: View {
     @Environment(\.dismiss) var dismiss
     @Binding var selectedUser: User?
 
+    @State private var title: String = ""
+    @State private var content: String = ""
+
     var body: some View {
         VStack(spacing: 20) {
-            TextField("Title", text: .constant(""))
-            TextField("Content", text: .constant(""))
+            TextField("Title", text: $title)
+            TextField("Content", text: $content)
 
             confirmButton
         }
@@ -25,7 +28,18 @@ struct NewPostScreen: View {
 
     private var confirmButton: some View {
         Button {
-            print("")
+            if selectedUser == nil { return }
+            do {
+                let newPost = Post(context: context)
+                newPost.title = title
+                newPost.content = content
+                newPost.author = selectedUser
+                newPost.date = .now
+                try context.save()
+                dismiss()
+            } catch {
+                print("An error occured")
+            }
         } label: {
             Text("Post")
         }

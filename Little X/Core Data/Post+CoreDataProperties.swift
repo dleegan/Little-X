@@ -2,7 +2,7 @@
 //  Post+CoreDataProperties.swift
 //  Little X
 //
-//  Created by dleegan on 24/01/2025.
+//  Created by dleegan on 26/01/2025.
 //
 //
 
@@ -16,8 +16,9 @@ extension Post {
         return NSFetchRequest<Post>(entityName: "Post")
     }
 
-    @NSManaged public var title: String?
     @NSManaged public var content: String?
+    @NSManaged public var date: Date?
+    @NSManaged public var title: String?
     @NSManaged public var author: User?
     @NSManaged public var likes: NSSet?
 

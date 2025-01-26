@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct PostCell: View {
-    let post: Post
+    @Environment(\.managedObjectContext) var context
+
+    @ObservedObject var post: Post
+
+    @Binding var selectedUser: User?
 
     var body: some View {
         HStack(alignment: .top, spacing: 10) {
@@ -36,7 +40,15 @@ struct PostCell: View {
             .frame(maxWidth: .infinity, alignment: .leading)
 
             Button {
-                print("Like the post")
+                do {
+                    let newLike = Like(context: context)
+                    newLike.date = .now
+                    newLike.user = selectedUser
+                    post.addToLikes(newLike)
+                    try context.save()
+                } catch {
+                    print("An Error has occured")
+                }
             } label: {
                 HStack(spacing: 8) {
                     Text("\(post.likes?.count ?? 0)")
@@ -50,7 +62,7 @@ struct PostCell: View {
 }
 
 #Preview {
-    PostCell(post: Post.preview)
+    PostCell(post: Post.preview, selectedUser: .constant(User.preview))
         .padding()
         .environment(
             \.managedObjectContext,

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct UserProfileCell: View {
     let user: User
-    @Binding var isSelected: Bool
+    let isSelected: Bool
 
     var body: some View {
         VStack {
@@ -70,11 +70,11 @@ struct UserProfileCell: View {
     HStack(spacing: 50) {
         UserProfileCell(
             user: User.preview,
-            isSelected: .constant(true)
+            isSelected: true
         )
         UserProfileCell(
             user: User.preview,
-            isSelected: .constant(false)
+            isSelected: false
         )
     }
     .environment(

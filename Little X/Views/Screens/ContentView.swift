@@ -20,66 +20,45 @@ struct ContentView: View {
 
     var body: some View {
         NavigationStack {
-            postsCells
-                .overlay(content: {
-                    if posts.isEmpty {
-                        ContentUnavailableView {
-                            Label("No user selelcted", systemImage: "text.page.slash")
-                        } description: {
-                            Text("No user selelcted. Please select one.")
-                        } actions: {
-                            Button {
-                                showUserList.toggle()
-                            } label: {
-                                Text("Select a user")
-                                    .bold()
-                            }
-                            .foregroundStyle(.white)
-                            .padding()
-                            .background(.blue)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                        }
-                        .background()
+            VStack {
+                postsCells
+            }
+            .frame(maxWidth: .infinity)
+            .overlay(content: {
+                if posts.isEmpty {
+                    ContentUnavailableView {
+                        Label("No posts found", systemImage: "text.page.slash")
+                    } description: {
+                        Text("No posts found. Please add a new one.")
                     }
-                })
-//                .overlay(content: {
-//                    if posts.isEmpty {
-//                        ContentUnavailableView {
-//                            Label("No user selelcted", systemImage: "person.crop.circle.badge.exclamationmark")
-//                        } description: {
-//                            Text("No user selelcted. Please select one.")
-//                        } actions: {
-//                            Button {
-//                                showUserList.toggle()
-//                            } label: {
-//                                Text("Select a user")
-//                                    .bold()
-//                            }
-//                            .foregroundStyle(.white)
-//                            .padding()
-//                            .background(.blue)
-//                            .clipShape(RoundedRectangle(cornerRadius: 10))
-//                        }
-//                        .background()
-//                    }
-//                })
-                .overlay(
-                    alignment: .bottomTrailing,
-                    content: {
-                        newPostButton
-                            .padding(.horizontal)
-                            .frame(
-                                maxWidth: .infinity,
-                                alignment: .trailing
-                            )
-                    }
-                )
-                .navigationTitle("Fil d'actu")
-                .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        userListButton
-                    }
+                    .background()
                 }
+            })
+            .overlay(content: {
+                VStack { newPostButton }
+                    .padding(.horizontal)
+                    .frame(
+                        maxWidth: .infinity,
+                        maxHeight: .infinity,
+                        alignment: .bottomTrailing
+                    )
+            })
+            .overlay(content: {
+                if selectedUser?.userId == nil {
+                    ContentUnavailableView {
+                        Label("No user selected", systemImage: "person.crop.circle.badge.exclamationmark")
+                    } description: {
+                        Text("No user selected. Please select one.")
+                    }
+                    .background()
+                }
+            })
+            .navigationTitle("Fil d'actu")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    userListButton
+                }
+            }
         }
         .sheet(isPresented: $showUserList) {
             UsersListScreen(selectedUser: $selectedUser)
@@ -96,17 +75,20 @@ struct ContentView: View {
                 print("an error as occured")
                 return
             }
-            print("user found")
-            print(usr)
             selectedUser = usr
+
+            print(posts)
         }
     }
 
     private var postsCells: some View {
-        List {
-            ForEach(posts) { post in
-                PostCell(post: post)
+        ScrollView {
+            VStack(spacing: 30) {
+                ForEach(posts) { post in
+                    PostCell(post: post, selectedUser: $selectedUser)
+                }
             }
+            .padding()
         }
         .scrollIndicators(.hidden)
     }

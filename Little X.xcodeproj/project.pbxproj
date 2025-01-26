@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		5368F2792D4547E10068DA40 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5368F2782D4547E10068DA40 /* User+CoreDataProperties.swift */; };
+		5368F2E12D45D7760068DA40 /* Post+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5368F2E02D45D7760068DA40 /* Post+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		534D46342D44388300027A46 /* Little X.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Little X.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5368F2782D4547E10068DA40 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "Little X/Core Data/User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5368F2E02D45D7760068DA40 /* Post+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Post+CoreDataProperties.swift"; path = "Little X/Core Data/Post+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -37,6 +39,7 @@
 		534D462B2D44388300027A46 = {
 			isa = PBXGroup;
 			children = (
+				5368F2E02D45D7760068DA40 /* Post+CoreDataProperties.swift */,
 				5368F2782D4547E10068DA40 /* User+CoreDataProperties.swift */,
 				534D46362D44388300027A46 /* Little X */,
 				534D46352D44388300027A46 /* Products */,
@@ -125,6 +128,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5368F2E12D45D7760068DA40 /* Post+CoreDataProperties.swift in Sources */,
 				5368F2792D4547E10068DA40 /* User+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
