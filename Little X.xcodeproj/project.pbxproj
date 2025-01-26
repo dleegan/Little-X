@@ -6,8 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		5368F2792D4547E10068DA40 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5368F2782D4547E10068DA40 /* User+CoreDataProperties.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		534D46342D44388300027A46 /* Little X.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Little X.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5368F2782D4547E10068DA40 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "Little X/Core Data/User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -32,6 +37,7 @@
 		534D462B2D44388300027A46 = {
 			isa = PBXGroup;
 			children = (
+				5368F2782D4547E10068DA40 /* User+CoreDataProperties.swift */,
 				534D46362D44388300027A46 /* Little X */,
 				534D46352D44388300027A46 /* Products */,
 			);
@@ -119,6 +125,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5368F2792D4547E10068DA40 /* User+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,10 +277,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dleegan.Little-X";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = 1;
 				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Debug;
@@ -309,10 +317,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dleegan.Little-X";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = 1;
 				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Release;
